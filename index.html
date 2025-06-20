@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>顧客資料表</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 1rem;
+      background-color: #f9f9f9;
+    }
+    h1 {
+      text-align: center;
+    }
+    form {
+      max-width: 500px;
+      margin: 0 auto 2rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+    input, button {
+      padding: 0.5rem;
+      font-size: 1rem;
+    }
+    table {
+      width: 90%;
+      margin: 0 auto;
+      border-collapse: collapse;
+    }
+    th, td {
+      border: 1px solid #ccc;
+      padding: 0.5rem;
+      text-align: left;
+    }
+    @media (max-width: 768px) {
+      table, tr, td, th {
+        display: block;
+      }
+      td::before {
+        content: attr(data-label);
+        font-weight: bold;
+        display: block;
+      }
+    }
+  </style>
+</head>
+<body>
+  <h1>顧客資料表</h1>
+
+  <form id="customerForm">
+    <input type="text" id="name" placeholder="姓名" required />
+    <input type="email" id="email" placeholder="Email" required />
+    <input type="text" id="phone" placeholder="電話" required />
+    <button type="submit">新增客戶</button>
+  </form>
+
+  <table>
+    <thead>
+      <tr>
+        <th>姓名</th>
+        <th>Email</th>
+        <th>電話</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody id="customerTableBody">
+      <!-- 資料會由 JS 動態產生 -->
+    </tbody>
+  </table>
+
+  <!-- ✅ 先載入 Supabase SDK（一定要有） -->
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js"></script>
+
+  <!-- ✅ 再載入你自己的邏輯 -->
+  <script src="app.js"></script>
+</body>
+</html>
